@@ -1,0 +1,44 @@
+Insert & Retrieve data
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+// import java.sql.*;
+public class datainsertselect {
+public static void main(String args[]) {
+try {
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection
+con=DriverManager.getConnection("jdbc:mysql://localhost:3306/avcoe","root","root");
+PreparedStatement stmt=con.prepareStatement("insert into info values(?,?,?)");
+stmt.setString(1,"user7");
+stmt.setString(2,"xyz@gmail.com");
+stmt.setString(3,"Sangamner");
+int i=stmt.executeUpdate();
+System.out.println(i + "Records inserted..");
+con.close();
+}
+catch(Exception e) {
+System.out.println(e);
+}
+finally {
+try {
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection
+con=DriverManager.getConnection("jdbc:mysql://localhost:3306/avcoe", "root",
+"root");
+PreparedStatement stmt=con.prepareStatement("select* from info");
+ResultSet rs= stmt.executeQuery();
+while(rs.next()) {
+System.out.println(rs.getString(1) + " " + rs.getString(2)+" " +rs.getString(3) +
+" ");
+}
+con.close();
+ }
+catch(Exception e) {
+System.out.println(e);
+}
+}
+}
+}
