@@ -1,0 +1,19 @@
+InetAddress class demo
+import java.io.*;
+
+import java.net.*;
+
+public class InetDemo2 {
+
+public static void main(String[] args) {
+
+try {
+InetAddress ip=InetAddress.getByName("localhost");
+System.out.printIn("Host Name: "+ip.getHostName()});
+System.out.printin("IP Address: "+ip.getHostAddress());
+}
+
+catch(Exception e) {
+
+System.out.printin(e);
+
